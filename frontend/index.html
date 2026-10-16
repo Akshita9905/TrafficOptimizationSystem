@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Optimization System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Traffic Optimization System</h1>
+            <p>Sensor-based traffic monitoring, priority management and Dijkstra route optimization</p>
+        </div>
+        <button onclick="updateSensors()">Update Sensors</button>
+    </header>
+
+    <main class="container">
+        <section class="stats">
+            <div class="card"><span>Total Vehicles</span><strong id="totalVehicles">0</strong></div>
+            <div class="card"><span>Average Waiting</span><strong id="avgWaiting">0 sec</strong></div>
+            <div class="card"><span>Emergency Sensors</span><strong id="emergencyCount">0</strong></div>
+            <div class="card"><span>Algorithm</span><strong>Dijkstra</strong></div>
+        </section>
+
+        <section class="panel">
+            <h2>Traffic Map</h2>
+            <div id="map"></div>
+        </section>
+
+        <section class="grid">
+            <div class="panel">
+                <h2>Priority Queue</h2>
+                <div id="priorityList" class="priority-list"></div>
+            </div>
+
+            <div class="panel">
+                <h2>Route Optimization</h2>
+                <div class="form-row">
+                    <label>Source</label>
+                    <select id="source"></select>
+                </div>
+                <div class="form-row">
+                    <label>Destination</label>
+                    <select id="destination"></select>
+                </div>
+                <button class="primary" onclick="findRoute()">Find Optimal Route</button>
+                <div id="routeInfo" class="route-info"></div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Live Sensor Data</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Road</th>
+                            <th>Vehicles</th>
+                            <th>Speed</th>
+                            <th>Waiting</th>
+                            <th>Traffic</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sensorTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <div id="message"></div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
